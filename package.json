@@ -1,0 +1,29 @@
+{
+  "name": "@newkrok/three-utils",
+  "version": "0.0.1",
+  "description": "THREE JS related utils",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NewKrok/three-utils.git"
+  },
+  "keywords": [
+    "threejs",
+    "utils",
+    "assets",
+    "audio",
+    "texture",
+    "model"
+  ],
+  "author": "Istvan Krisztian Somoracz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NewKrok/three-utils/issues"
+  },
+  "homepage": "https://github.com/NewKrok/three-utils#readme",
+  "dependencies": {
+    "three": "0.138.0",
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
