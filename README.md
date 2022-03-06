@@ -2,7 +2,8 @@
 
 THREE JS related utils
 
-# Install
+Used in my ThreeJS projects:
+- https://github.com/NewKrok/three-game
 
-Install with npm
-soon...
+# Install
+**npm install @newkrok/three-utils --save**
