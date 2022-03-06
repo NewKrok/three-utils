@@ -7,7 +7,7 @@ import {
   loadTextures,
 } from "./loaders.js";
 
-import { clone } from "three/examples/jsm/utils/SkeletonUtils";
+import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
 
 const _fbxModels = {};
 export const registerFBXModel = ({ id, fbxModel }) =>
