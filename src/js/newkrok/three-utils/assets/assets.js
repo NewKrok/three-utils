@@ -37,6 +37,40 @@ export const registerAudioBuffer = ({ id, audioBuffer }) =>
   (_audioBuffers[id] = audioBuffer);
 export const getAudioBuffer = (id) => _audioBuffers[id];
 
+const applyMaterialConfig = ({
+  material = null,
+  materialConfig = { texture: { id: null }, color: 0xffffff, alphaTest: 0.5 },
+}) => {
+  material.map = materialConfig?.texture?.id
+    ? getTexture(materialConfig?.texture.id)
+    : null;
+  material.alphaTest = materialConfig?.alphaTest || 0.5;
+  material.color = new THREE.Color(materialConfig?.color || 0xffffff);
+};
+
+const createMaterial = (
+  materialConfig = {
+    materialType: null,
+    texture: { id: null },
+    color: 0xffffff,
+    alphaTest: 0.5,
+  }
+) => {
+  let material = null;
+  if (materialConfig instanceof Array)
+    material = materialConfig.map((config) => getMaterial(config));
+  else if (materialConfig.materialType) {
+    material = new materialConfig.materialType({
+      map: materialConfig?.texture?.id
+        ? getTexture(materialConfig?.texture.id)
+        : null,
+      alphaTest: materialConfig.alphaTest || 0.5,
+      color: new THREE.Color(materialConfig?.color || 0xffffff),
+    });
+  }
+  return material;
+};
+
 export const loadAssets = ({
   textures,
   gltfModels,
@@ -126,36 +160,25 @@ export const loadAssets = ({
               loadFBXModels(fbxModels, updateProgress)
                 .then((loadedModels) => {
                   loadedModels.forEach((element) => {
-                    let material = null;
-                    if (element.texture instanceof Array)
-                      material = element.texture.map(
-                        ({ id }) =>
-                          new element.materialType({
-                            map: getTexture(id),
-                            alphaTest: 0.5,
-                            color: element.color || 0xffffff,
-                          })
-                      );
-                    else if (
-                      element.materialType ||
-                      element.texture?.id ||
-                      element.color
-                    ) {
-                      material = new element.materialType({
-                        map: getTexture(element.texture.id),
-                        alphaTest: 0.5,
-                        color: element.color || 0xffffff,
-                      });
-                    }
+                    const createdMaterial = createMaterial(element.material);
                     let textureIndex = 0;
                     element.fbxModel.traverse((child) => {
                       if (child.isMesh) {
                         child.castShadow = true;
                         child.receiveShadow = true;
                         child.material =
-                          material instanceof Array
-                            ? material[textureIndex]
-                            : material || child.material;
+                          createdMaterial instanceof Array
+                            ? createdMaterial[textureIndex]
+                            : createdMaterial || child.material;
+                        if (!createdMaterial && element.material) {
+                          applyMaterialConfig({
+                            material: child.material,
+                            materialConfig:
+                              element.material instanceof Array
+                                ? element.material[textureIndex]
+                                : element.material,
+                          });
+                        }
                         textureIndex++;
                       }
                     });
