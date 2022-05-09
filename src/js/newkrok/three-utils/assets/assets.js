@@ -82,10 +82,16 @@ export const loadAssets = ({
   new Promise((resolve) => {
     const result = [];
     const assetCount =
-      textures.length + gltfModels.length + fbxModels.length + audio.length;
+      textures.length +
+      gltfModels.length +
+      fbxModels.length +
+      fbxSkeletonAnimations.length +
+      audio.length;
     let loadedCount = 0;
-    const updateProgress = () =>
-      onProgress && onProgress(++loadedCount / assetCount);
+    const updateProgress = () => {
+      loadedCount++;
+      onProgress && onProgress(loadedCount / assetCount);
+    };
 
     loadTextures(textures, updateProgress)
       .then((loadedTextures) => {
@@ -97,51 +103,26 @@ export const loadAssets = ({
 
         loadGLTFModels(gltfModels, updateProgress).then((loadedModels) => {
           loadedModels.forEach((element) => {
+            const createdMaterial = createMaterial(element.material);
+            let textureIndex = 0;
             element.gltfModel.scene.traverse((child) => {
-              let material = null;
-              if (element.materialType) {
-                if (element.texture instanceof Array)
-                  material = element.texture.map(
-                    (id) =>
-                      new element.materialType({
-                        map: getTexture(id),
-                        alphaTest: 0.5,
-                        color: element.color || 0xffffff,
-                      })
-                  );
-                else if (element.materialType) {
-                  const textureId =
-                    typeof element.texture.id === "function"
-                      ? element.texture.id(child)
-                      : element.texture.id;
-                  material = new element.materialType({
-                    map: getTexture(textureId),
-                    alphaTest: 0.5,
-                    color: element.color || 0xffffff,
-                  });
-                }
-              }
               if (child.isMesh) {
                 child.castShadow = true;
                 child.receiveShadow = true;
-                if (element.texture?.repeat && material.map) {
-                  if (typeof element.texture.repeat === "function") {
-                    const calculatedRepeat = element.texture.repeat(child);
-                    material = material.clone();
-                    material.map = material.map.clone();
-                    material.map.needsUpdate = true;
-                    material.map.repeat.set(
-                      calculatedRepeat.x,
-                      calculatedRepeat.y
-                    );
-                  } else
-                    material.map.repeat.set(
-                      element.texture.repeat.x,
-                      element.texture.repeat.y
-                    );
+                child.material =
+                  createdMaterial instanceof Array
+                    ? createdMaterial[textureIndex]
+                    : createdMaterial || child.material;
+                if (!createdMaterial && element.material) {
+                  applyMaterialConfig({
+                    material: child.material,
+                    materialConfig:
+                      element.material instanceof Array
+                        ? element.material[textureIndex]
+                        : element.material,
+                  });
                 }
-                // TODO: handle texture id array
-                child.material = material || child.material;
+                textureIndex++;
               }
             });
             registerGLTFModel(element);
