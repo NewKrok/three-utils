@@ -157,8 +157,9 @@ export const loadTextures = (list, onProgress) => {
               onElementLoaded({ id, texture });
               releaseTextureLoader(textureLoader);
 
-              if (!textureLoaders.some((entry) => entry.isUsed))
+              if (!textureLoaders.some((entry) => entry.isUsed)) {
                 resolve(elements);
+              }
             },
             null,
             (error) =>

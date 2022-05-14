@@ -1,6 +1,6 @@
 {
   "name": "@newkrok/three-utils",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "THREE JS related utils",
   "exports": {
     "./src/*": "./src/*"
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/NewKrok/three-utils#readme",
   "dependencies": {
-    "three": "0.140.0"
+    "three": "0.140.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

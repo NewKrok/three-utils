@@ -8,6 +8,7 @@ import {
 } from "./loaders.js";
 
 import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
+import { deepDispose } from "../dispose-utils.js";
 
 const _fbxModels = {};
 export const registerFBXModel = ({ id, fbxModel }) =>
@@ -69,6 +70,21 @@ const createMaterial = (
     });
   }
   return material;
+};
+
+export const disposeAssets = () => {
+  Object.entries(_textures).forEach(([key, texture]) => {
+    texture.dispose();
+    delete _textures[key];
+  });
+  Object.entries(_fbxModels).forEach(([key, fbxModel]) => {
+    deepDispose(fbxModel);
+    delete _fbxModels[key];
+  });
+  Object.entries(_gltfModels).forEach(([key, gltfModel]) => {
+    deepDispose(gltfModel.scene);
+    delete _gltfModels[key];
+  });
 };
 
 export const loadAssets = ({
