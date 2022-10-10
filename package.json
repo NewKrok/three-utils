@@ -1,9 +1,13 @@
 {
   "name": "@newkrok/three-utils",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "THREE JS related utils",
+  "type": "module",
   "exports": {
-    "./src/*": "./src/*"
+    ".": "./src/js/newkrok/three-utils/index.js",
+    "./src/*": "./src/*",
+    "./assets": "./src/js/newkrok/three-utils/assets/index.js",
+    "./audio": "./src/js/newkrok/three-utils/audio/index.js"
   },
   "repository": {
     "type": "git",
