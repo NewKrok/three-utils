@@ -1,1 +1,1 @@
-export * as AudioUtils from "./audio.js";
+export * as AudioUtils from './audio.js';
