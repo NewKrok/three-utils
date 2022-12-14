@@ -52,19 +52,23 @@ const applyMaterialConfig = ({
 const createMaterial = (
   materialConfig = {
     materialType: null,
-    texture: { id: null },
+    texture: { id: null, flipY: true },
     color: 0xffffff,
     alphaTest: 0.5,
   }
 ) => {
   let material = null;
   if (materialConfig instanceof Array)
-    material = materialConfig.map((config) => getMaterial(config));
+    material = materialConfig.map((config) => createMaterial(config));
   else if (materialConfig.materialType) {
+    const map = materialConfig?.texture?.id
+      ? getTexture(materialConfig?.texture.id)
+      : null;
+    if (map) {
+      map.flipY = materialConfig?.texture?.flipY ?? true;
+    }
     material = new materialConfig.materialType({
-      map: materialConfig?.texture?.id
-        ? getTexture(materialConfig?.texture.id)
-        : null,
+      map,
       alphaTest: materialConfig.alphaTest || 0.5,
       color: new THREE.Color(materialConfig?.color || 0xffffff),
     });
@@ -94,6 +98,7 @@ export const loadAssets = ({
   fbxSkeletonAnimations,
   audio,
   onProgress,
+  verbose = true,
 }) =>
   new Promise((resolve) => {
     const result = [];
@@ -115,7 +120,8 @@ export const loadAssets = ({
           element.encoding = THREE.sRGBEncoding;
           registerTexture(element);
         });
-        console.log(`Textures(${loadedTextures.length}) are loaded...`);
+        if (verbose)
+          console.log(`Textures(${loadedTextures.length}) are loaded...`);
 
         loadGLTFModels(gltfModels, updateProgress).then((loadedModels) => {
           loadedModels.forEach((element) => {
@@ -125,10 +131,13 @@ export const loadAssets = ({
               if (child.isMesh) {
                 child.castShadow = true;
                 child.receiveShadow = true;
-                child.material =
-                  createdMaterial instanceof Array
-                    ? createdMaterial[textureIndex]
-                    : createdMaterial || child.material;
+                if (child.material instanceof Array)
+                  child.material = createdMaterial;
+                else
+                  child.material =
+                    createdMaterial instanceof Array
+                      ? createdMaterial[textureIndex]
+                      : createdMaterial || child.material;
                 if (!createdMaterial && element.material) {
                   applyMaterialConfig({
                     material: child.material,
@@ -143,16 +152,18 @@ export const loadAssets = ({
             });
             registerGLTFModel(element);
           });
-          console.log(`GLTF Models(${loadedModels.length}) are loaded...`);
+          if (verbose)
+            console.log(`GLTF Models(${loadedModels.length}) are loaded...`);
 
           loadFBXModels(fbxSkeletonAnimations, updateProgress).then(
             (loadedAnimations) => {
               loadedAnimations.forEach((element) => {
                 registerFBXSkeletonAnimation(element);
               });
-              console.log(
-                `FBX Skeleton Animations(${loadedAnimations.length}) are loaded...`
-              );
+              if (verbose)
+                console.log(
+                  `FBX Skeleton Animations(${loadedAnimations.length}) are loaded...`
+                );
 
               loadFBXModels(fbxModels, updateProgress)
                 .then((loadedModels) => {
@@ -163,10 +174,13 @@ export const loadAssets = ({
                       if (child.isMesh) {
                         child.castShadow = true;
                         child.receiveShadow = true;
-                        child.material =
-                          createdMaterial instanceof Array
-                            ? createdMaterial[textureIndex]
-                            : createdMaterial || child.material;
+                        if (child.material instanceof Array)
+                          child.material = createdMaterial;
+                        else
+                          child.material =
+                            createdMaterial instanceof Array
+                              ? createdMaterial[textureIndex]
+                              : createdMaterial || child.material;
                         if (!createdMaterial && element.material) {
                           applyMaterialConfig({
                             material: child.material,
@@ -182,28 +196,30 @@ export const loadAssets = ({
                     registerFBXModel(element);
                   });
                   result.fbxModels = [...loadedModels];
-                  console.log(
-                    `FBX Models(${loadedModels.length}) are loaded...`
-                  );
+                  if (verbose)
+                    console.log(
+                      `FBX Models(${loadedModels.length}) are loaded...`
+                    );
 
                   loadAudio(audio, updateProgress)
                     .then((loadedAudio) => {
                       loadedAudio.forEach((element) =>
                         registerAudioBuffer(element)
                       );
-                      console.log(
-                        `Audio files(${loadedAudio.length}) are loaded...`
-                      );
+                      if (verbose)
+                        console.log(
+                          `Audio files(${loadedAudio.length}) are loaded...`
+                        );
                       resolve(result);
                     })
                     .catch((error) =>
-                      console.log(
+                      console.error(
                         `Fatal error during Audio files preloader phase: ${error}`
                       )
                     );
                 })
                 .catch((error) =>
-                  console.log(
+                  console.error(
                     `Fatal error during FBX model preloader phase: ${error}`
                   )
                 );
@@ -212,6 +228,6 @@ export const loadAssets = ({
         });
       })
       .catch((error) =>
-        console.log(`Fatal error during texture preloader phase: ${error}`)
+        console.error(`Fatal error during texture preloader phase: ${error}`)
       );
   });
