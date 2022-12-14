@@ -1,6 +1,6 @@
 {
   "name": "@newkrok/three-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "THREE JS related utils",
   "type": "module",
   "exports": {
