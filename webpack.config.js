@@ -52,7 +52,7 @@ export default {
     plugins: [
         new BundleAnalyzerPlugin({
             analyzerMode: 'json',
-            reportFilename: 'bundle-report.json',
+            reportFilename: '../bundle-report.json',
             openAnalyzer: false,
             sourceType: 'module',
         }),

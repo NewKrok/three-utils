@@ -22,6 +22,7 @@ coverage/
 build/
 *.tsbuildinfo
 bundle-report.json
+dist/bundle-report.json
 
 # Development dependencies
 node_modules/
