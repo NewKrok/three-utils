@@ -1,1 +1,1 @@
-export * as AssetsUtils from "./assets.js";
+export * as AssetsUtils from './assets.js';

@@ -1,8 +1,11 @@
-export const patchObject = (objectA, objectB, config = { skippedProperties: [], applyToFirstObject: false }) => {
+export const patchObject = (objectA, objectB, config = {
+    skippedProperties: [],
+    applyToFirstObject: false,
+}) => {
     const result = {};
     Object.keys(objectA).forEach((key) => {
         if (!config.skippedProperties || !config.skippedProperties.includes(key)) {
-            if (typeof objectA[key] === "object" &&
+            if (typeof objectA[key] === 'object' &&
                 objectA[key] &&
                 objectB[key] &&
                 !Array.isArray(objectA[key])) {
@@ -22,11 +25,17 @@ export const patchObject = (objectA, objectB, config = { skippedProperties: [], 
     });
     return result;
 };
-export const deepMerge = (objectA, objectB, config = { skippedProperties: [], applyToFirstObject: false }) => {
+export const deepMerge = (objectA, objectB, config = {
+    skippedProperties: [],
+    applyToFirstObject: false,
+}) => {
     const result = {};
-    Array.from(new Set([...Object.keys((objectA || {})), ...Object.keys((objectB || {}))])).forEach((key) => {
+    Array.from(new Set([
+        ...Object.keys((objectA || {})),
+        ...Object.keys((objectB || {})),
+    ])).forEach((key) => {
         if (!config.skippedProperties || !config.skippedProperties.includes(key)) {
-            if (typeof objectA?.[key] === "object" &&
+            if (typeof objectA?.[key] === 'object' &&
                 objectA?.[key] &&
                 objectB?.[key] &&
                 !Array.isArray(objectA[key])) {
@@ -50,7 +59,7 @@ export const getObjectDiff = (objectA, objectB, config = { skippedProperties: []
     const result = {};
     Object.keys(objectA).forEach((key) => {
         if (!config.skippedProperties || !config.skippedProperties.includes(key)) {
-            if (typeof objectA[key] === "object" &&
+            if (typeof objectA[key] === 'object' &&
                 objectA[key] &&
                 objectB[key] &&
                 !Array.isArray(objectA[key])) {
@@ -59,7 +68,9 @@ export const getObjectDiff = (objectA, objectB, config = { skippedProperties: []
                     result[key] = objectDiff;
             }
             else {
-                const mergedValue = objectB[key] === 0 ? 0 : objectB[key] || objectA[key];
+                const mergedValue = objectB[key] === 0
+                    ? 0
+                    : objectB[key] || objectA[key];
                 if (mergedValue !== objectA[key])
                     result[key] = mergedValue;
             }

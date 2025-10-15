@@ -1,7 +1,7 @@
-import * as THREE from "three";
+import * as THREE from 'three';
 
-import { PositionalAudioHelper } from "three/examples/jsm/helpers/PositionalAudioHelper";
-import { getAudioBuffer } from "../assets/assets.js";
+import { PositionalAudioHelper } from 'three/examples/jsm/helpers/PositionalAudioHelper';
+import { getAudioBuffer } from '../assets/assets.js';
 
 const defaultConfig = { loop: false, volume: 1, isMusic: false };
 let audioConfig = {};
@@ -80,7 +80,7 @@ export const stopAudio = (cacheId) => {
 export const getAudioCache = (cacheId) =>
   audioCache[cacheId] || {
     audio: null,
-    audioId: "",
+    audioId: '',
     container: null,
     lastPlayedTime: 0,
   };

@@ -1,14 +1,14 @@
-import * as THREE from "three";
+import * as THREE from 'three';
 
 import {
   loadAudio,
   loadFBXModels,
   loadGLTFModels,
   loadTextures,
-} from "./loaders.js";
+} from './loaders.js';
 
-import { clone } from "three/examples/jsm/utils/SkeletonUtils.js";
-import { deepDispose } from "../dispose-utils.js";
+import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js';
+import { deepDispose } from '../dispose-utils.js';
 
 const _fbxModels = {};
 export const registerFBXModel = ({ id, fbxModel }) =>

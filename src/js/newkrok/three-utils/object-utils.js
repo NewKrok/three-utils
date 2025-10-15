@@ -7,7 +7,7 @@ export const patchObject = (
   Object.keys(objectA).forEach((key) => {
     if (!config.skippedProperties || !config.skippedProperties.includes(key)) {
       if (
-        typeof objectA[key] === "object" &&
+        typeof objectA[key] === 'object' &&
         objectA[key] &&
         objectB[key] &&
         !Array.isArray(objectA[key])
@@ -18,8 +18,8 @@ export const patchObject = (
           objectB[key] === 0
             ? 0
             : objectB[key] === false
-            ? false
-            : objectB[key] || objectA[key];
+              ? false
+              : objectB[key] || objectA[key];
         if (config.applyToFirstObject) objectA[key] = result[key];
       }
     }
@@ -38,7 +38,7 @@ export const deepMerge = (
   ).forEach((key) => {
     if (!config.skippedProperties || !config.skippedProperties.includes(key)) {
       if (
-        typeof objectA[key] === "object" &&
+        typeof objectA[key] === 'object' &&
         objectA[key] &&
         objectB[key] &&
         !Array.isArray(objectA[key])
@@ -49,8 +49,8 @@ export const deepMerge = (
           objectB[key] === 0
             ? 0
             : objectB[key] === false
-            ? false
-            : objectB[key] || objectA[key];
+              ? false
+              : objectB[key] || objectA[key];
         if (config.applyToFirstObject) objectA[key] = result[key];
       }
     }
@@ -67,7 +67,7 @@ const getObjectDiff = (
   Object.keys(objectA).forEach((key) => {
     if (!config.skippedProperties || !config.skippedProperties.includes(key)) {
       if (
-        typeof objectA[key] === "object" &&
+        typeof objectA[key] === 'object' &&
         objectA[key] &&
         objectB[key] &&
         !Array.isArray(objectA[key])
