@@ -1,6 +1,6 @@
 {
   "name": "@newkrok/three-utils",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "Three.js-based utility library providing essential tools for THREE.js applications including assets loading, audio management, geometry utilities, and more.",
   "main": "./dist/index.js",
@@ -55,7 +55,8 @@
   "homepage": "https://github.com/NewKrok/three-utils#readme",
   "scripts": {
     "build": "rimraf dist && tsc && webpack --config webpack.config.js",
-    "prepublishOnly": "npm run build",
+    "docs": "typedoc",
+    "prepublishOnly": "npm run build && npm run docs",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src",
@@ -89,6 +90,7 @@
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
     "typedoc": "^0.28.1",
+    "typedoc-plugin-markdown": "^4.2.12",
     "typescript": "^5.7.3",
     "webpack": "^5.97.1",
     "webpack-bundle-analyzer": "^4.10.2",

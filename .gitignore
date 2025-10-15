@@ -9,6 +9,9 @@ yarn-error.log*
 build/
 *.tsbuildinfo
 
+# Documentation (generated)
+docs/
+
 # Testing
 coverage/
 .nyc_output
