@@ -17,7 +17,7 @@ describe('TokenUtils', () => {
 
     it('should return different IDs on each call', () => {
       const ids = new Set();
-      
+
       for (let i = 0; i < 10; i++) {
         ids.add(getUniqueId());
       }
