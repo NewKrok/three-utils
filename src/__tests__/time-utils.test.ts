@@ -30,5 +30,37 @@ describe('TimeUtils', () => {
       const result = formatTime(time, TimePattern.HH_MM_SS);
       expect(result).toBe('00:59:59');
     });
+
+    it('should handle hours overflow correctly', () => {
+      const time = 7261000; // 2 hours, 1 minute, 1 second
+      const result = formatTime(time, TimePattern.HH_MM_SS);
+      expect(result).toBe('02:01:01');
+    });
+
+    it('should handle milliseconds precision in MM_SS_MS pattern', () => {
+      const time = 1001; // 1 second, 1 millisecond
+      const result = formatTime(time, TimePattern.MM_SS_MS);
+      expect(result).toBe('00:01.001');
+    });
+
+    it('should pad single digit values correctly', () => {
+      const time = 9009; // 9 seconds, 9 milliseconds
+      const result = formatTime(time, TimePattern.MM_SS_MS);
+      expect(result).toBe('00:09.009');
+    });
+
+    it('should handle very large hour values', () => {
+      const time = 36061000; // 10 hours, 1 minute, 1 second
+      const result = formatTime(time, TimePattern.HH_MM_SS);
+      expect(result).toBe('10:01:01');
+    });
+  });
+
+  describe('TimePattern constants', () => {
+    it('should have correct TimePattern values', () => {
+      expect(TimePattern.HH_MM_SS).toBe('HH:MM:SS');
+      expect(TimePattern.MM_SS).toBe('MM:SS');
+      expect(TimePattern.MM_SS_MS).toBe('MM:SS.MS');
+    });
   });
 });
