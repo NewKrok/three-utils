@@ -73,12 +73,12 @@ export const stopAudio = (cacheId) => {
     }
 };
 export const getAudioCache = (cacheId) => {
-    return audioCache[cacheId] || {
+    return (audioCache[cacheId] || {
         audio: null,
         audioId: '',
         container: undefined,
         lastPlayedTime: 0,
-    };
+    });
 };
 const updateMusicVolumes = () => {
     Object.keys(audioCache).forEach((key) => {

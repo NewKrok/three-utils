@@ -13,8 +13,8 @@ export const disposeMaterials = (
   }
 };
 
-export const deepDispose = (container: THREE.Mesh): void => {
-  const { isMesh, material, geometry } = container;
+export const deepDispose = (container: THREE.Object3D): void => {
+  const { isMesh, material, geometry } = container as any;
   if (isMesh) {
     if (material) {
       disposeMaterials(material);
