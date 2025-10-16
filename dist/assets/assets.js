@@ -1,8 +1,15 @@
-// Basic assets utilities - simplified version
+// Assets registry for textures and audio buffers
+const textureRegistry = new Map();
+const audioBufferRegistry = new Map();
 export const registerTexture = (id, texture) => {
-    // Implementation will be added with full assets system
+    textureRegistry.set(id, texture);
 };
 export const getTexture = (id) => {
-    // Implementation will be added with full assets system
-    return null;
+    return textureRegistry.get(id) || null;
+};
+export const registerAudioBuffer = (id, audioBuffer) => {
+    audioBufferRegistry.set(id, audioBuffer);
+};
+export const getAudioBuffer = (id) => {
+    return audioBufferRegistry.get(id) || null;
 };
