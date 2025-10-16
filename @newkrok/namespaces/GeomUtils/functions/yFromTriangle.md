@@ -8,7 +8,7 @@
 
 > **yFromTriangle**(`point`, `trianglePointA`, `trianglePointB`, `trianglePointC`): `number`
 
-Defined in: [geom-utils.ts:24](https://github.com/NewKrok/three-utils/blob/a38231b899f4eeb8c881d6a9f7248bab4e06755e/src/geom-utils.ts#L24)
+Defined in: [geom-utils.ts:24](https://github.com/NewKrok/three-utils/blob/8b62813b0bd4d9cac17cb2423f600f7f4b2f5818/src/geom-utils.ts#L24)
 
 ## Parameters
 

@@ -8,7 +8,7 @@
 
 > **getFBXModel**(`id`): `Group`
 
-Defined in: [assets/assets.ts:81](https://github.com/NewKrok/three-utils/blob/a38231b899f4eeb8c881d6a9f7248bab4e06755e/src/assets/assets.ts#L81)
+Defined in: [assets/assets.ts:81](https://github.com/NewKrok/three-utils/blob/8b62813b0bd4d9cac17cb2423f600f7f4b2f5818/src/assets/assets.ts#L81)
 
 ## Parameters
 

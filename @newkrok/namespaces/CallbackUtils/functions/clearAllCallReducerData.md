@@ -8,7 +8,7 @@
 
 > **clearAllCallReducerData**(): `void`
 
-Defined in: [callback-utils.ts:71](https://github.com/NewKrok/three-utils/blob/a38231b899f4eeb8c881d6a9f7248bab4e06755e/src/callback-utils.ts#L71)
+Defined in: [callback-utils.ts:71](https://github.com/NewKrok/three-utils/blob/8b62813b0bd4d9cac17cb2423f600f7f4b2f5818/src/callback-utils.ts#L71)
 
 ## Returns
 

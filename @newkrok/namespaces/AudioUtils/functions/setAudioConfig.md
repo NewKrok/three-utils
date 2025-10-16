@@ -8,7 +8,7 @@
 
 > **setAudioConfig**(`config`): `void`
 
-Defined in: [audio/audio.ts:43](https://github.com/NewKrok/three-utils/blob/a38231b899f4eeb8c881d6a9f7248bab4e06755e/src/audio/audio.ts#L43)
+Defined in: [audio/audio.ts:43](https://github.com/NewKrok/three-utils/blob/8b62813b0bd4d9cac17cb2423f600f7f4b2f5818/src/audio/audio.ts#L43)
 
 ## Parameters
 
