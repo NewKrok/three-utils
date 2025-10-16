@@ -1,0 +1,67 @@
+# Development files
+src/
+.github/
+.husky/
+
+# Configuration files
+tsconfig.json
+webpack.config.js
+jest.config.js
+babel.config.json
+eslint.config.mjs
+.prettierrc
+commitlint.config.cjs
+typedoc.json
+
+# Test and coverage
+src/__tests__/
+coverage/
+*.test.ts
+
+# Build artifacts (except dist/)
+build/
+*.tsbuildinfo
+bundle-report.json
+dist/bundle-report.json
+
+# Development dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor and OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+
+# Optional caches
+.npm
+.eslintcache
+
+# Documentation (generated)
+docs/
+
+# Git
+.git/
+.gitignore
