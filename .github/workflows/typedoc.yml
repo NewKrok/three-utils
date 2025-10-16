@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pages: write
       id-token: write
 
@@ -34,15 +34,12 @@ jobs:
       - name: Generate Typedoc documentation
         run: npm run docs
 
-      - name: Create docs directory if not exists
-        run: mkdir -p docs
-
-      - name: Disable Jekyll
-        run: echo "" > docs/.nojekyll
-
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/v2'
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
+          enable_jekyll: false
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
