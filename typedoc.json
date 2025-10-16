@@ -8,8 +8,5 @@
     "name": "@newkrok/three-utils",
     "readme": "README.md",
     "theme": "default",
-    "excludeExternals": true,
-    "plugin": [
-        "typedoc-plugin-markdown"
-    ]
+    "excludeExternals": true
 }

@@ -8,19 +8,19 @@ export const CallLimits = {
   CALL_120_PER_SECONDS: 1000 / 120,
 } as const;
 
-interface CallData {
+type CallData = {
   lastUpdate: number;
   callCount: number;
-}
+};
 
-interface CallWithReducerParams {
+export type CallWithReducerParams = {
   id: string;
   callback: (param?: any) => void;
   callLimit: number;
   elapsed: number;
   callbackParam?: any;
   forceCallCount?: boolean;
-}
+};
 
 let callData: Record<string, CallData> = {};
 
