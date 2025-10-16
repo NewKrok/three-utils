@@ -8,7 +8,7 @@
 
 > **ObjectOperationConfig** = `object`
 
-Defined in: [object-utils.ts:1](https://github.com/NewKrok/three-utils/blob/0c3b335b8b17394d6bfec6195204dc78d6827053/src/object-utils.ts#L1)
+Defined in: [object-utils.ts:1](https://github.com/NewKrok/three-utils/blob/1a272fdeec043de26e2ba522d538de872f96190d/src/object-utils.ts#L1)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [object-utils.ts:1](https://github.com/NewKrok/three-utils/blob/0c3b
 
 > `optional` **applyToFirstObject**: `boolean`
 
-Defined in: [object-utils.ts:3](https://github.com/NewKrok/three-utils/blob/0c3b335b8b17394d6bfec6195204dc78d6827053/src/object-utils.ts#L3)
+Defined in: [object-utils.ts:3](https://github.com/NewKrok/three-utils/blob/1a272fdeec043de26e2ba522d538de872f96190d/src/object-utils.ts#L3)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [object-utils.ts:3](https://github.com/NewKrok/three-utils/blob/0c3b
 
 > `optional` **skippedProperties**: `string`[]
 
-Defined in: [object-utils.ts:2](https://github.com/NewKrok/three-utils/blob/0c3b335b8b17394d6bfec6195204dc78d6827053/src/object-utils.ts#L2)
+Defined in: [object-utils.ts:2](https://github.com/NewKrok/three-utils/blob/1a272fdeec043de26e2ba522d538de872f96190d/src/object-utils.ts#L2)

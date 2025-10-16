@@ -8,7 +8,7 @@
 
 > **getUniqueId**(): `number`
 
-Defined in: [token.ts:2](https://github.com/NewKrok/three-utils/blob/0c3b335b8b17394d6bfec6195204dc78d6827053/src/token.ts#L2)
+Defined in: [token.ts:2](https://github.com/NewKrok/three-utils/blob/1a272fdeec043de26e2ba522d538de872f96190d/src/token.ts#L2)
 
 ## Returns
 
