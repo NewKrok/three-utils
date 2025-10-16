@@ -8,7 +8,7 @@
 
 > **getObjectDiff**\<`T`, `V`\>(`objectA`, `objectB`, `config`): `Partial`\<`T` \| `V`\>
 
-Defined in: [object-utils.ts:83](https://github.com/NewKrok/three-utils/blob/1a272fdeec043de26e2ba522d538de872f96190d/src/object-utils.ts#L83)
+Defined in: [object-utils.ts:83](https://github.com/NewKrok/three-utils/blob/a38231b899f4eeb8c881d6a9f7248bab4e06755e/src/object-utils.ts#L83)
 
 ## Type Parameters
 

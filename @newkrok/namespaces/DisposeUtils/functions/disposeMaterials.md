@@ -8,7 +8,7 @@
 
 > **disposeMaterials**(`material`): `void`
 
-Defined in: [dispose-utils.ts:3](https://github.com/NewKrok/three-utils/blob/1a272fdeec043de26e2ba522d538de872f96190d/src/dispose-utils.ts#L3)
+Defined in: [dispose-utils.ts:3](https://github.com/NewKrok/three-utils/blob/a38231b899f4eeb8c881d6a9f7248bab4e06755e/src/dispose-utils.ts#L3)
 
 ## Parameters
 

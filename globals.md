@@ -6,6 +6,8 @@
 
 ## Namespaces
 
+- [AssetsUtils](@newkrok/namespaces/AssetsUtils/README.md)
+- [AudioUtils](@newkrok/namespaces/AudioUtils/README.md)
 - [CallbackUtils](@newkrok/namespaces/CallbackUtils/README.md)
 - [DisposeUtils](@newkrok/namespaces/DisposeUtils/README.md)
 - [GeomUtils](@newkrok/namespaces/GeomUtils/README.md)

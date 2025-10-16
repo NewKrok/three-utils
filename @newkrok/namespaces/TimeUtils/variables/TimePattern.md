@@ -8,7 +8,7 @@
 
 > `const` **TimePattern**: `object`
 
-Defined in: [time-utils.ts:1](https://github.com/NewKrok/three-utils/blob/1a272fdeec043de26e2ba522d538de872f96190d/src/time-utils.ts#L1)
+Defined in: [time-utils.ts:1](https://github.com/NewKrok/three-utils/blob/a38231b899f4eeb8c881d6a9f7248bab4e06755e/src/time-utils.ts#L1)
 
 ## Type Declaration
 
