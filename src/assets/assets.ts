@@ -10,29 +10,29 @@ import {
 } from './loaders.js';
 
 // Type definitions
-interface FBXModelEntry {
+export type FBXModelEntry = {
   id: string;
   fbxModel: THREE.Group;
   material?: MaterialConfig | MaterialConfig[];
-}
+};
 
-interface GLTFModelEntry {
+export type GLTFModelEntry = {
   id: string;
   gltfModel: GLTF;
   material?: MaterialConfig | MaterialConfig[];
-}
+};
 
-interface TextureEntry {
+export type TextureEntry = {
   id: string;
   texture: THREE.Texture;
-}
+};
 
-interface AudioBufferEntry {
+export type AudioBufferEntry = {
   id: string;
   audioBuffer: AudioBuffer;
-}
+};
 
-interface MaterialConfig {
+export type MaterialConfig = {
   materialType?: new (params: any) => THREE.Material;
   texture?: {
     id: string;
@@ -40,9 +40,9 @@ interface MaterialConfig {
   };
   color?: number;
   alphaTest?: number;
-}
+};
 
-interface LoadAssetsParams {
+export type LoadAssetsParams = {
   textures: Array<{ id: string; url: string }>;
   gltfModels: Array<{
     id: string;
@@ -58,7 +58,7 @@ interface LoadAssetsParams {
   audio: Array<{ id: string; url: string }>;
   onProgress?: (progress: number) => void;
   verbose?: boolean;
-}
+};
 
 // Asset registries
 const _fbxModels: Record<string, THREE.Group> = {};

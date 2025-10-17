@@ -2,33 +2,33 @@ import * as THREE from 'three';
 import { PositionalAudioHelper } from 'three/examples/jsm/helpers/PositionalAudioHelper.js';
 import { getAudioBuffer } from '../assets/assets.js';
 
-interface AudioConfig {
+export type AudioConfig = {
   loop?: boolean;
   volume?: number;
   isMusic?: boolean;
-}
+};
 
-interface PlayAudioParams {
+export type PlayAudioParams = {
   audioId: string;
   position?: THREE.Vector3;
   radius?: number;
   scene?: THREE.Scene;
   camera?: THREE.Camera;
   cacheId?: string;
-}
+};
 
-interface AudioCacheEntry {
+export type AudioCacheEntry = {
   audio: THREE.Audio<GainNode> | THREE.PositionalAudio;
   audioId: string;
   container?: THREE.Mesh;
   lastPlayedTime: number;
-}
+};
 
-interface CoreConfig {
+type CoreConfig = {
   masterVolume: number;
   musicVolume: number;
   effectsVolume: number;
-}
+};
 
 const defaultConfig: AudioConfig = { loop: false, volume: 1, isMusic: false };
 let audioConfig: Record<string, AudioConfig> = {};
